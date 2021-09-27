@@ -37,11 +37,10 @@ client.on("interactionCreate", (interaction) => {
     }
 })
 
-client.login(process.env.TOKEN)
-
 http.createServer().listen(process.env.PORT || 8080, (err) => {
     if (err) {
         console.error(err)
     } else {
+        client.login(process.env.TOKEN)
     }
 })
