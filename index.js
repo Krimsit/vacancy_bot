@@ -1,6 +1,7 @@
 const { Client, Intents } = require("discord.js")
 const dotenv = require("dotenv")
 var cron = require("node-cron")
+const http = require("http")
 
 const push_to = require("./push_to.js")
 const channels = require("./channels.json")
@@ -36,4 +37,10 @@ client.on("interactionCreate", (interaction) => {
     }
 })
 
-client.login(process.env.TOKEN)
+http.createServer().listen(3000, (err) => {
+    if (err) {
+        console.error(err)
+    } else {
+        client.login(process.env.TOKEN)
+    }
+})
